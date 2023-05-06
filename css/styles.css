@@ -18,6 +18,9 @@
   --color-white: #ffffff;
   --color-dairy: #fcfcfc;
   --color-bg: #e5e5e5;
+  --color-modal: rgba(46, 47, 66, 0.4);
+  /* animation */
+  --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -122,7 +125,7 @@ img {
   padding-top: 120px;
 }
 
-/* logo */
+/* Header */
 
 .page-header {
   border-bottom: 1px solid var(--color-cornflower);
@@ -168,14 +171,6 @@ img {
   color: var(--color-cloud);
 }
 
-.site-nav-item {
-  display: inline-block;
-
-  color: var(--color-navy-blue-modal);
-  padding-top: 24px;
-  padding-bottom: 24px;
-}
-
 .site-nav {
   font-weight: 500;
   font-size: 16px;
@@ -185,8 +180,40 @@ img {
   gap: 40px;
 }
 
-.site-nav-item:hover,
-.site-nav-item:focus {
+.site-nav-item {
+  position: relative;
+}
+.site-nav-link {
+  display: inline-block;
+
+  color: var(--color-navy-blue-modal);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  transition: color var(--animation);
+}
+
+.site-nav-link::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.site-nav-link.active::after {
+  background-color: var(--color-ocean);
+}
+
+.site-nav-link.active {
+  color: var(--color-ocean);
+}
+
+.site-nav-link:hover,
+.site-nav-link:focus {
   color: var(--color-ocean);
 }
 
@@ -212,6 +239,7 @@ img {
 }
 .kontacts-mail {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transition: color var(--animation);
 }
 
 .kontacts-mail:hover,
@@ -258,6 +286,7 @@ img {
   min-width: 169px;
   height: 56px;
   border: none;
+  transition: background-color var(--animation);
 }
 
 .button-nav:hover,
@@ -357,6 +386,7 @@ img {
   height: 100%;
   background-color: var(--color-iris);
   border-radius: 50%;
+  transition: background-color var(--animation);
 }
 
 .socials-link:hover,
@@ -390,6 +420,7 @@ img {
   width: 168px;
   border: 1px solid var(--color-light-slate);
   border-radius: 4px;
+  transition: color var(--animation), border-color var(--animation);
 }
 
 .customers-link:hover,
@@ -457,12 +488,14 @@ img {
   border: 1px solid var(--color-cornflower);
   border-radius: 4px;
   padding: 12px 24px;
+  transition: color var(--animation), background-color var(--animation),
+    box-shadow var(--animation);
 }
 
-.button-filter:hover,
-.button-filter:focus {
+.button-portfolio:hover,
+.button-portfolio:focus {
   color: var(--color-white);
-  background: var(--color-ocean);
+  background-color: var(--color-ocean);
   border: 1px solid transparent;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
@@ -490,12 +523,7 @@ img {
 
 .item-portfolio {
   display: block;
-}
-
-.item-portfolio:focus,
-.item-portfolio:hover {
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  transition: box-shadow var(--animation);
 }
 
 .name-item-portfolio {
@@ -506,9 +534,106 @@ img {
   padding: 32px 16px;
 }
 
+.item-portfolio:focus,
+.item-portfolio:hover {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
 .name-item {
   margin-bottom: 8px;
 }
+/* overlay */
+.thumb-portfolio {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+
+  transform: translateY(100%);
+
+  transition: transform var(--animation), opacity var(--animation),
+    box-shadow var(--animation);
+
+  background-color: var(--color-iris);
+}
+.overlay-text {
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  line-height: 1.28;
+  color: var(--color-cloud);
+  padding: 40px 32px;
+}
+
+.item-portfolio:hover .overlay,
+.item-portfolio:focus .overlay {
+  opacity: 1;
+  transform: translateY(0%);
+  border: 1px solid var(--color-cloud);
+  box-shadow: 1px, 0px, 2px rgba(46, 47, 66, 0.08), 1px, 0px,
+    1px rgba(46, 47, 66, 0.16), 6px, 0px, 1px rgba(46, 47, 66, 0.08);
+}
+
 .footer {
   padding: 100px 0;
+}
+
+/* Modal window */
+.backdrop {
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-modal);
+  transition: opacity var(--animation), visibility var(--animation);
+}
+.modal {
+  position: absolute;
+  top: calc(50%);
+  left: calc(50%);
+  transform: translate(-50%, -50%);
+
+  /* padding-top: 24px;
+  padding-right: 24px; */
+  width: 408px;
+  height: 584px;
+  border-radius: 4px;
+  background-color: var(--color-dairy);
+  box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2), 3px 0px 1px rgba(0, 0, 0, 0.12),
+    1px 0px 1px rgba(0, 0, 0, 0.14);
+}
+.modal-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: var(--color-cornflower);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+.modal-close-icon {
+  fill: var(--color-navy-blue-modal);
+}
+/* повність приховуємо модалку, з умовою щоб читалка могла її прочитати */
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }

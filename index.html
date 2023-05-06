@@ -27,15 +27,19 @@
           </a>
 
           <ul class="site-nav list link">
-            <li>
-              <a class="site-nav-item link" href="./index.html">Studio</a>
+            <li class="site-nav-item">
+              <a class="site-nav-link link active" href="./index.html"
+                >Studio</a
+              >
             </li>
-            <li>
-              <a class="site-nav-item link" href="./portfolio.html"
+            <li class="site-nav-item">
+              <a class="site-nav-link link" href="./portfolio.html"
                 >Portfolio</a
               >
             </li>
-            <li><a class="site-nav-item link" href="">Contacts</a></li>
+            <li class="site-nav-item">
+              <a class="site-nav-link link" href="">Contacts</a>
+            </li>
           </ul>
         </nav>
         <address class="kontacts list">
@@ -60,7 +64,9 @@
       <section class="section hero">
         <div class="container">
           <h1 class="hero-title">Effective Solutions for Your Business</h1>
-          <button type="button" class="button-nav">Order Service</button>
+          <button type="button" class="button-nav" data-modal-open>
+            Order Service
+          </button>
         </div>
       </section>
 
@@ -498,5 +504,16 @@
         </div>
       </div>
     </footer>
+    <!-- Modal window -->
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="modal-close-btn" data-modal-close>
+          <svg class="modal-close-icon" width="8" height="8">
+            <use href="./images/icons.svg#icon-btn-close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
