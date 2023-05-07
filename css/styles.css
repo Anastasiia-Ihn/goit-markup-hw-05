@@ -190,6 +190,7 @@ img {
 }
 
 .site-nav-link::after {
+  position: relative;
   content: "";
   display: block;
   position: absolute;
@@ -418,6 +419,7 @@ img {
   width: 168px;
   border: 1px solid var(--color-light-slate);
   border-radius: 4px;
+
   transition: color var(--animation), border-color var(--animation);
 }
 
@@ -487,7 +489,7 @@ img {
   border-radius: 4px;
   padding: 12px 24px;
   transition: color var(--animation), background-color var(--animation),
-    box-shadow var(--animation);
+    box-shadow var(--animation), border-color var(--animation);
 }
 
 .button-portfolio:hover,
@@ -559,14 +561,13 @@ img {
 
   transform: translateY(100%);
 
-  transition: transform var(--animation), opacity var(--animation),
-    box-shadow var(--animation);
+  transition: transform var(--animation);
 
   background-color: var(--color-iris);
 
   font-size: 16px;
   letter-spacing: 0.02em;
-  line-height: 1.28;
+  line-height: 1.5;
   color: var(--color-cloud);
   padding: 40px 32px;
 }
@@ -637,7 +638,7 @@ img {
 }
 .modal-close-icon {
   fill: var(--color-navy-blue-modal);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--animation);
 }
 
 .modal-close-icon:hover,
