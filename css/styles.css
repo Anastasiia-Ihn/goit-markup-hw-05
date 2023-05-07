@@ -641,9 +641,9 @@ img {
   transition: fill var(--animation);
 }
 
-.modal-close-icon:hover,
-.modal-close-icon:focus {
-  fill: #ffffff;
+.modal-close-btn:hover .modal-close-icon,
+.modal-close-btn:focus .modal-close-icon {
+  fill: var(--color-white);
 }
 
 /* повність приховуємо модалку, з умовою щоб читалка могла її прочитати */
