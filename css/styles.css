@@ -216,33 +216,30 @@ img {
   color: var(--color-ocean);
 }
 
-.kontacts-mail,
-.kontacts-tel {
+.contacts-link {
   display: block;
   color: var(--primary-text-color);
   font-style: normal;
   padding-top: 24px;
   padding-bottom: 24px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transition: color var(--animation);
 }
 
-.kontacts-list {
+.contacts-list {
   gap: 40px;
   display: flex;
 }
 
-.kontacts {
+.contacts {
   font-size: 16px;
   line-height: 1.5;
   font-style: normal;
   color: var(--primary-text-color);
 }
-.kontacts-mail {
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  transition: color var(--animation);
-}
 
-.kontacts-mail:hover,
-.kontacts-mail:focus {
+.contacts-link:hover,
+.contacts-link:focus {
   color: var(--color-ocean);
 }
 
